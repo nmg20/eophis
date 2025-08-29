@@ -1,0 +1,53 @@
+# Profiles
+
+spring:
+	profiles:
+		active: dev
+
+# Datasource y JPA
+
+spring:
+	datasource:
+		url: jdbc:postgresql://localhost:5432/aix
+		username: admin
+		password: admin
+		driver-class-name: org.postgresql.Driver
+	jpa:
+		hibernate:
+			ddl-auto: update
+		show-sql: true
+		properties:
+			hibernate:
+				format_sql: true
+
+# H2
+spring:
+	config.activate.on-profile: dev
+	datasource:
+		url: jdbc:h2:mem:aixdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+		driver-class-name: org.h2.Driver
+		username: aa
+		password: aa
+	jpa:
+		hibernate:
+			ddl-auto: update
+		show-sql: true
+
+# Server
+server:
+	post: 8080
+	servlet:
+		context-path: /api
+
+# JWT / Security
+jwt:
+	secret: idk
+	expiration: 3600000
+	
+# Logging
+logging:
+	level:
+		root: INFO
+		com.aix: DEBUG
+
+# TODO: External apis
